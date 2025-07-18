@@ -38,6 +38,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_svg: ^2.0.10
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -76,8 +77,8 @@ flutter:
   # fonts:
   #   - family: Schyler
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  #       - asset: fonts/Schuyler-Regular.ttf
+  #       - asset: fonts/Schuyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
@@ -87,3 +88,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+  assets:
+    - assets/img/
