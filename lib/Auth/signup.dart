@@ -7,22 +7,25 @@ import 'package:trucknav/components/labeledTextField.dart';
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: LoginScreen(),
+    home: SignupScreen(),
   ));
 }
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final fullNameController = TextEditingController();
+    final companyNameController = TextEditingController();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.only(top: 100.0, left: 30.0, right: 30.0),
+        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        child: Center(
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,7 +38,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const Center(
                   child: Text(
-                    'Welcome Back',
+                    'Create Account',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -46,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 4),
                 const Center(
                   child: Text(
-                    'Sign in to continue your journey',
+                    'Join thousands of professional drivers',
                     style: TextStyle(
                       fontSize: 16,
                       color: Color(0xFF6B7280),
@@ -54,11 +57,22 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 32),
-
+                LabeledTextField(
+                  label: 'Full Name',
+                  hintText: 'Enter your full name',
+                  controller: fullNameController,
+                ),
+                const SizedBox(height: 16),
                 LabeledTextField(
                   label: 'Email',
                   hintText: 'Enter your email',
                   controller: emailController,
+                ),
+                const SizedBox(height: 16),
+                LabeledTextField(
+                  label: 'Company Name',
+                  hintText: 'Enter your company name',
+                  controller: companyNameController,
                 ),
                 const SizedBox(height: 16),
                 LabeledTextField(
@@ -70,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 24),
 
                 GradientButton(
-                  text: 'Sign In',
+                  text: 'Create Account',
                   onPressed: () {
                     // Your login logic here
                   },
@@ -80,23 +94,22 @@ class LoginScreen extends StatelessWidget {
                 Center(
                   child: RichText(
                     text: TextSpan(
-                      text: "Don't have an account? ",
+                      text: "Already have an account? ",
                       style: const TextStyle(
                         color: Colors.black, // Default color
                         fontSize: 18,
                       ),
                       children: [
                         TextSpan(
-                          text: 'Sign Up',
+                          text: 'Sign In',
                           style: const TextStyle(
-                            color: Color(0xFF2c5aa0),
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.none
+                              color: Color(0xFF2c5aa0),
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.none
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              // TODO: Navigate to Sign Up
-                              Navigator.pushNamed(context, '/signup');                              ;
+                              Navigator.pushNamed(context, '/login');
                             },
                         ),
                       ],
@@ -106,6 +119,7 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
           ),
+        ),
       ),
     );
   }
