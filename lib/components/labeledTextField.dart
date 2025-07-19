@@ -5,6 +5,7 @@ class LabeledTextField extends StatefulWidget {
   final String hintText;
   final TextEditingController controller;
   final bool obscureText;
+  final String? Function(String?)? validator;
 
   const LabeledTextField({
     super.key,
@@ -12,6 +13,7 @@ class LabeledTextField extends StatefulWidget {
     required this.hintText,
     required this.controller,
     this.obscureText = false,
+    this.validator,
   });
 
   @override
@@ -47,10 +49,11 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
           ),
         ),
         const SizedBox(height: 8),
-        TextField(
+        TextFormField(
           focusNode: _focusNode,
           controller: widget.controller,
           obscureText: widget.obscureText,
+          validator: widget.validator,
           decoration: InputDecoration(
             hintText: widget.hintText,
             contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
@@ -60,14 +63,14 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Color(0xFFD1D5DB), // Light gray border when not focused
+                color: Color(0xFFD1D5DB),
                 width: 1.5,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Color(0xFF2C5AA0), // Gradient start color as solid focus border
+                color: Color(0xFF2C5AA0),
                 width: 2.0,
               ),
             ),
